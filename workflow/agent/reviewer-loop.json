@@ -1,0 +1,48 @@
+{
+  "version": 1,
+  "description": "Ordered reviewer loops for the portable PRD workflow. Use reviewer ids from workflow/agent/reviewer-registry.json. Loops may repeat reviewers.",
+  "defaultLoopId": "default-prd-loop",
+  "loops": {
+    "default-prd-loop": {
+      "description": "Default product-to-architecture-to-delivery review loop for most PRDs.",
+      "reviewers": [
+        "product-manager",
+        "cto",
+        "software-architect",
+        "software-engineer",
+        "qa-lead",
+        "technical-writer"
+      ]
+    },
+    "architecture-deep-dive": {
+      "description": "A deeper technical loop that intentionally revisits leadership after implementation scrutiny.",
+      "reviewers": [
+        "cto",
+        "software-architect",
+        "software-engineer",
+        "cto"
+      ]
+    },
+    "design-product-loop": {
+      "description": "A user-facing loop for flows that need stronger product and experience refinement.",
+      "reviewers": [
+        "product-manager",
+        "ux-designer",
+        "ui-developer",
+        "product-manager"
+      ]
+    },
+    "ops-release-loop": {
+      "description": "An operational loop for launch-critical PRDs.",
+      "reviewers": [
+        "devops-engineer",
+        "qa-lead",
+        "coo",
+        "devops-engineer"
+      ]
+    }
+  },
+  "manualContinuation": {
+    "description": "After the default loop finishes, the orchestrator must ask whether to continue. The user may reply DONE or provide the next reviewer id to run once. This may repeat indefinitely until DONE is received."
+  }
+}

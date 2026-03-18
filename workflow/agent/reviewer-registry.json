@@ -1,0 +1,446 @@
+{
+  "version": 2,
+  "description": "Full reviewer catalog for the portable PRD workflow. This file defines who exists, what each reviewer is good at, and how each reviewer should behave inside their own revise-until-stable pass. Ordered execution lives in workflow/agent/reviewer-loop.json.",
+  "extensionRule": "Add the role to workflow/docs/TEAM.MD first, then add its id to index and reviewers here, then reference that id from workflow/agent/reviewer-loop.json if it should appear in a default or named loop.",
+  "index": [
+    "ceo-founder",
+    "cto",
+    "product-manager",
+    "software-architect",
+    "software-engineer",
+    "data-engineer",
+    "integration-engineer",
+    "ml-ai-engineer",
+    "devops-engineer",
+    "qa-lead",
+    "qa-engineer",
+    "ux-designer",
+    "ui-developer",
+    "technical-writer",
+    "head-of-marketing",
+    "account-executive",
+    "sales-development-representative",
+    "customer-success-manager",
+    "operations-specialist",
+    "data-analyst",
+    "cfo",
+    "coo",
+    "scrum-master-agile-coach"
+  ],
+  "reviewers": {
+    "ceo-founder": {
+      "teamRole": "CEO / Founder",
+      "enabled": true,
+      "aliases": ["ceo", "founder"],
+      "recommendedStages": ["strategy", "scope-check"],
+      "when": "Use when the PRD needs a mission, focus, or company-priority check before deeper planning.",
+      "focus": ["strategy", "focus", "company direction", "scope discipline"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "cto": {
+      "teamRole": "CTO",
+      "enabled": true,
+      "aliases": ["chief-technology-officer"],
+      "recommendedStages": ["backlog-shape", "cross-cutting", "platform-risk"],
+      "when": "Use when platform fit, launch risk, cost, sequencing, or technical leverage could invalidate the backlog.",
+      "focus": ["platform fit", "launch risk", "rollback safety", "sequencing", "cost"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "product-manager": {
+      "teamRole": "Product Manager",
+      "enabled": true,
+      "aliases": ["pm", "product"],
+      "recommendedStages": ["prd-intake", "ticket-split", "scope-check"],
+      "when": "Use when clarifying user problems, success criteria, measurable outcomes, and scope boundaries.",
+      "focus": ["user problem", "success criteria", "scope clarity", "measurement"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "software-architect": {
+      "teamRole": "Software Architect",
+      "enabled": true,
+      "aliases": ["architect"],
+      "recommendedStages": ["architecture", "ticket-review", "dependency-review"],
+      "when": "Use when contracts, boundaries, dependencies, and failure modes need to be sharpened.",
+      "focus": ["interfaces", "boundaries", "failure modes", "dependency structure"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "software-engineer": {
+      "teamRole": "Software Engineer",
+      "enabled": true,
+      "aliases": ["engineer", "swe"],
+      "recommendedStages": ["implementation-fit", "ticket-review"],
+      "when": "Use when the plan may fight the grain of the codebase or needs clearer implementation detail.",
+      "focus": ["codebase fit", "implementation clarity", "testability"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "data-engineer": {
+      "teamRole": "Data Engineer",
+      "enabled": true,
+      "aliases": ["analytics-engineer"],
+      "recommendedStages": ["data-review"],
+      "when": "Use when the PRD depends on ingestion, modeling, pipelines, or warehouse correctness.",
+      "focus": ["data contracts", "pipeline reliability", "freshness", "schema evolution"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "integration-engineer": {
+      "teamRole": "Integration Engineer",
+      "enabled": true,
+      "aliases": ["integrations"],
+      "recommendedStages": ["integration-review"],
+      "when": "Use when third-party APIs, auth flows, webhooks, retries, or rate limits matter.",
+      "focus": ["external contracts", "error recovery", "token lifecycle", "rate limits"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "ml-ai-engineer": {
+      "teamRole": "ML/AI Engineer",
+      "enabled": true,
+      "aliases": ["ai-engineer", "ml-engineer"],
+      "recommendedStages": ["ai-review"],
+      "when": "Use when prompts, evaluations, model quality, safety, or inference cost matter.",
+      "focus": ["evaluation quality", "model behavior", "latency", "cost", "safety"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "devops-engineer": {
+      "teamRole": "DevOps Engineer",
+      "enabled": true,
+      "aliases": ["devops", "platform-ops"],
+      "recommendedStages": ["operations", "release-readiness"],
+      "when": "Use when CI/CD, infrastructure, observability, deployment safety, or recovery plans matter.",
+      "focus": ["operability", "deployment safety", "observability", "rollback", "incident recovery"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "qa-lead": {
+      "teamRole": "QA Lead",
+      "enabled": true,
+      "aliases": ["quality-lead"],
+      "recommendedStages": ["validation", "release-readiness"],
+      "when": "Use when risk coverage, release readiness, or the quality bar needs to be challenged.",
+      "focus": ["risk coverage", "acceptance depth", "regression confidence", "release confidence"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "qa-engineer": {
+      "teamRole": "QA Engineer",
+      "enabled": true,
+      "aliases": ["tester", "quality-engineer"],
+      "recommendedStages": ["validation", "test-design"],
+      "when": "Use when test scenarios, reproducible defects, or edge-case flows need stronger coverage.",
+      "focus": ["edge cases", "test scenarios", "automation ROI", "reproducibility"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "ux-designer": {
+      "teamRole": "UX Designer",
+      "enabled": true,
+      "aliases": ["ux", "designer"],
+      "recommendedStages": ["ux-review"],
+      "when": "Use when information architecture, usability, flow clarity, or accessibility matter.",
+      "focus": ["task clarity", "usability", "accessibility", "interaction cost"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "ui-developer": {
+      "teamRole": "UI Developer",
+      "enabled": true,
+      "aliases": ["frontend", "ui"],
+      "recommendedStages": ["ui-review"],
+      "when": "Use when component structure, responsive behavior, polish, or UI implementation fit matter.",
+      "focus": ["component reuse", "frontend reliability", "performance", "accessibility"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "technical-writer": {
+      "teamRole": "Technical Writer",
+      "enabled": true,
+      "aliases": ["writer", "docs"],
+      "recommendedStages": ["workflow-docs", "handoff-docs"],
+      "when": "Use when tickets, plans, or operating guidance need to be clearer for future contributors.",
+      "focus": ["clarity", "readability", "novice usability", "documentation quality"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "head-of-marketing": {
+      "teamRole": "Head of Marketing",
+      "enabled": true,
+      "aliases": ["marketing"],
+      "recommendedStages": ["go-to-market"],
+      "when": "Use when messaging, positioning, launch narrative, or audience framing matter.",
+      "focus": ["positioning", "message clarity", "audience fit", "launch narrative"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "account-executive": {
+      "teamRole": "Account Executive",
+      "enabled": true,
+      "aliases": ["ae", "sales"],
+      "recommendedStages": ["sales-feedback"],
+      "when": "Use when enterprise sales, demos, objections, or customer value framing matter.",
+      "focus": ["customer pain", "commercial narrative", "objections", "deal fit"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "sales-development-representative": {
+      "teamRole": "Sales Development Representative",
+      "enabled": true,
+      "aliases": ["sdr"],
+      "recommendedStages": ["sales-feedback"],
+      "when": "Use when top-of-funnel messaging, qualification, or first-touch relevance matter.",
+      "focus": ["message fit", "qualification", "attention hooks", "signal quality"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "customer-success-manager": {
+      "teamRole": "Customer Success Manager",
+      "enabled": true,
+      "aliases": ["csm", "success"],
+      "recommendedStages": ["customer-operations"],
+      "when": "Use when onboarding, adoption, enablement, retention, or recovery flows matter.",
+      "focus": ["time to value", "adoption", "retention", "customer enablement"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "operations-specialist": {
+      "teamRole": "Operations Specialist",
+      "enabled": true,
+      "aliases": ["ops"],
+      "recommendedStages": ["process-review"],
+      "when": "Use when internal process design, operational ownership, or configuration workflows matter.",
+      "focus": ["process reliability", "ownership", "handoffs", "operational clarity"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "data-analyst": {
+      "teamRole": "Data Analyst",
+      "enabled": true,
+      "aliases": ["analyst"],
+      "recommendedStages": ["measurement-review"],
+      "when": "Use when metrics, analytics plans, experiments, or instrumentation quality matter.",
+      "focus": ["metric quality", "measurement", "segmentation", "instrumentation"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "cfo": {
+      "teamRole": "CFO",
+      "enabled": true,
+      "aliases": ["finance"],
+      "recommendedStages": ["financial-review"],
+      "when": "Use when budget, pricing, ROI, margin, or cost-risk trade-offs matter.",
+      "focus": ["cost", "return", "pricing", "financial risk"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "coo": {
+      "teamRole": "COO",
+      "enabled": true,
+      "aliases": ["operations-lead"],
+      "recommendedStages": ["execution-review"],
+      "when": "Use when ownership, capacity, execution sequencing, or operating feasibility matter.",
+      "focus": ["ownership", "execution feasibility", "capacity", "operating rhythm"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    },
+    "scrum-master-agile-coach": {
+      "teamRole": "Scrum Master / Agile Coach",
+      "enabled": true,
+      "aliases": ["scrum-master", "agile-coach"],
+      "recommendedStages": ["flow-review"],
+      "when": "Use when work sequencing, blockers, iteration size, or team flow need scrutiny.",
+      "focus": ["flow efficiency", "blockers", "work in progress", "predictability"],
+      "passPolicy": {
+        "canReviseDirectly": true,
+        "canAskFollowupQuestions": true,
+        "exitWhen": "no_more_material_revisions",
+        "handoffWhen": [
+          "stable_for_reviewer_lens",
+          "blocked_on_user_decision",
+          "blocked_on_other_reviewer"
+        ]
+      }
+    }
+  }
+}
