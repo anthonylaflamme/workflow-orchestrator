@@ -16,7 +16,7 @@ This folder packages a PRD-to-ticket workflow into a transportable bundle. It wa
 
 1. Put or identify the PRD somewhere in the repo.
 2. Point the agent at `workflow/agent/MAIN-ORCHESTRATOR.md`.
-3. Give it the PRD path and, optionally, a `prd-slug`.
+3. Give it the PRD path
 4. Let the orchestrator scaffold or reopen `workflow/workspaces/<prd-slug>/`.
 5. Answer the structured decision checkpoints the orchestrator raises. It may ask as many rounds of questions as needed to shape the backlog correctly.
 6. Review the generated `workflow/workspaces/<prd-slug>/TICKET-INDEX.md`, `DECISIONS.md`, and per-ticket ExecPlans.
@@ -24,6 +24,14 @@ This folder packages a PRD-to-ticket workflow into a transportable bundle. It wa
 8. At the end of the default review loop, answer the final reviewer prompt with either `DONE` or the next reviewer id to run.
 
 There is no fixed cap on ticket count. The workflow should create however many tickets the PRD actually requires.
+
+## Example Prompt
+
+Copy this prompt, paste it into the agent, and replace the PRD block with your own product requirements document.
+
+```md
+Use `workflow/agent/MAIN-ORCHESTRATOR.md` with <prd-path> as the source of truth for this run.
+```
 
 ## Per-PRD Workspaces
 
